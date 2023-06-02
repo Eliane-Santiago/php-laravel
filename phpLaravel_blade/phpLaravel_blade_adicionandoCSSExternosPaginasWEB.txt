@@ -1,0 +1,12 @@
+### BLADE - ADICIONANDO CSS EXTERNOS A PÁGINA WEB
+OBS(01): ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+OBS(02): ESSES CODIGOS SÃO INCLUÍDOS DENTRO DA PASTA PUBLIC (public/...)
+
+Passo 01 - Criar um pasta com o nome "css"
+
+Passo 02 - Criar um arquivo com o nome "estilo_basico.css"
+
+Passo 03 - Colocar a tag link dentro da tag head
+
+<link rel="stylesheet" href="{{ asset('css/estilo_basico.css')}}">
+

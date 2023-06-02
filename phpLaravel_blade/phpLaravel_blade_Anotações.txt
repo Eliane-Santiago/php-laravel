@@ -1,0 +1,3 @@
+### SINTASE BLADE
+É o motor de renderização de Views 
+O blade é o motor de renderização do laravel por padrão

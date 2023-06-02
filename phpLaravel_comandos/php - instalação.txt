@@ -1,0 +1,39 @@
+### PHP INSTALAÇÃO
+
+PASSO 01: Acessar o site do php
+
+https://www.php.net/dowloads
+
+
+PASSO 02: Clicar na aba dowloads
+
+PASSO 03: Vai na opção "Current Stable PHP 7.4.6 (Changelog)" 
+
+PASSO 04: Clica no nome "Windows"
+
+PASSO 05: Vai na opção "VC x64 Non Thread Safe (2020-May-12 15:28:31)" 
+
+PASSO 06: Clica na opção "Zip[24.82MB]"
+
+PASSO 07: Aguadar o dowload 
+
+PASSO 08: Criar uma pasta na unidade C: como o nome "php-7.4.6" despois colocar o arquivo que foi baixado e descompactar 
+
+PASSO 09: Configurar o php instalado nas variáveis de ambiente do windows
+
+PASSO 10: Pegar o endereço da pasta do php-7.4.6 -> C:\php-7.4.6 e depois acrecentar nas variáveis de ambiente do sistema operacional, localizar a variável Path e depois clicar em "Editar" e depois é só colocar o endereço "C:\php-7.4.6" e depois clicar em ok
+
+PRONTO PHP INSTALADO...
+
+
+### CONFIURANDO A MEMORIA DO PHP
+
+PASSO 01: Abrir o arquivo php.ini
+
+PASSO 02: Localizar o comando abaixo e colocar igual a -1 que significa usar toda a mémia disponível na criação dos projetos
+>>> memory_limit = -1
+
+ATENÇÃO!!!
+VARIÁVEIS DE AMBIENTE
+
+C:\xampp\php8

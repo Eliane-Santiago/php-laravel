@@ -1,0 +1,19 @@
+### BLADE - EXTENDS
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- Extentendo layout (Conceito de classe e herança)
+- Determina o layout que será usado na view
+
+//SINTAXE PHP
+
+@php
+	
+		
+
+@endphp
+
+OBS: 
+
+//SINTAXE BLADE
+
+@extends('site.master.layout')

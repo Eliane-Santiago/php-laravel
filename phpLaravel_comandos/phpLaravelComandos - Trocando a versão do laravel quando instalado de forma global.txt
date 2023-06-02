@@ -1,0 +1,8 @@
+### TROCANDO A VERSÃO DO LARAVEL QUANDO INSTALADO DE FORMA GLOBAL
+
+>>> composer global show 
+OBS: verifica todas as versões instaladas no computador
+
+>>> composer global require "laravel/installer={versão_desejada}"
+OBS: instalando uma versão nova
+Ex.:  composer global require "laravel/installer=^7.0.0"

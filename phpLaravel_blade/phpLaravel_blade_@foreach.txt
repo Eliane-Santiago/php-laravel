@@ -1,0 +1,69 @@
+### BLADE - FOREACH
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- 
+
+//SINTAXE PHP
+
+@php
+	
+		
+
+@endphp
+
+OBS: 
+
+//SINTAXE BLADE
+	
+
+@foreach($fornecedores as $indice => $fornecedor)
+
+		Fornecedor: {{$fornecedor['nome']}}
+		<br>
+		Status: {{$fornecedor['status']}}
+		<br>
+		CNPJ: {{$fornecedor['cnpj'] ?? 'Dado não foi preenchido' }}
+		<br>
+		Telefone: ({{$fornecedor['ddd'] ?? ''}}) {{$fornecedor['telefone'] ?? ''}}
+		<br>
+		<hr>
+		
+@endforeach
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+@foreach($fornecedores as $indice => $fornecedor)
+
+		Fornecedor: {{$fornecedor['nome']}}
+		@php $fornecedores['nome'] = 'Outro nome para o Fornecedor' @endphp 
+		{{-- Essa mudança ocorre somente local, não afeta o array original--}}
+		<br>
+		Status: {{$fornecedor['status']}}
+		<br>
+		CNPJ: {{$fornecedor['cnpj'] ?? 'Dado não foi preenchido' }}
+		<br>
+		Telefone: ({{$fornecedor['ddd'] ?? ''}}) {{$fornecedor['telefone'] ?? ''}}
+		<br>
+		<hr>
+		
+@endforeach
+
+-----------------------------------------------------------------------------------------------------------------
+
+@foreach($fornecedores as $indice => $fornecedor)
+
+		Fornecedor: {{$fornecedor['nome']}}
+		@php $fornecedores[$indice]['nome'] = 'Outro nome para o Fornecedor' @endphp 
+		{{-- Essa mudança ocorre local e no array original --}}
+		<br>
+		Status: {{$fornecedor['status']}}
+		<br>
+		CNPJ: {{$fornecedor['cnpj'] ?? 'Dado não foi preenchido' }}
+		<br>
+		Telefone: ({{$fornecedor['ddd'] ?? ''}}) {{$fornecedor['telefone'] ?? ''}}
+		<br>
+		<hr>
+		
+@endforeach

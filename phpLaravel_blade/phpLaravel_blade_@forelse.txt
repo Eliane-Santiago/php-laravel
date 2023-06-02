@@ -1,0 +1,40 @@
+### BLADE - FORELSE
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- É nativo da sintaxe blade
+
+//SINTAXE PHP
+
+@php
+	//Esse comando não possui similar no php
+@endphp
+
+OBS: 
+
+//SINTAXE BLADE
+
+OBS: ESTRUTURA...
+@forelse
+		//Bloco de código que será executado se a condição for verdadeira
+	@empty
+		//Bloco de código que será executado se a condição for falsa
+@endforelse
+
+
+@forelse($fornecedores as $indice => $fornecedor)
+
+		Fornecedor: {{$fornecedor['nome']}}
+		<br>
+		Status: {{$fornecedor['status']}}
+		<br>
+		CNPJ: {{$fornecedor['cnpj'] ?? 'Dado não foi preenchido' }}
+		<br>
+		Telefone: ({{$fornecedor['ddd'] ?? ''}}) {{$fornecedor['telefone'] ?? ''}}
+		<br>
+		<hr>
+		
+		@empty
+		
+			Não existe fornecedores cadastrados!!!
+		
+@endforelse

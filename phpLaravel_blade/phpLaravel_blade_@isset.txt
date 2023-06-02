@@ -1,0 +1,41 @@
+### BLADE - @ISSET
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- Esse comando verifica se as varíveis / índices de array existem
+- É método nativo do php
+- O isset verifica apenas se a variavel existe ou não, ou seja não se preocupa com o valor
+
+OBS(01): @isset/@endisset
+
+OBS(02): No PHP o ISSET é usado dentro dos blocos IF/ELSE
+
+
+//SINTAXE PHP
+
+@php
+
+	if( isset($variavel){ } //Retorna true se a variavel estiver definida
+	
+@endphp
+
+//SINTAXE BLADE
+
+@isset($fornecedores)
+	Forneceder: {{$fornecedores[0]['nome']}}
+	<br/>
+		Status: {{$fornecedores[0]['status']}}
+	<br/>
+@endisset
+
+OBS: O método isset acima está verificando se a variável  existe, se existir o que está dentro do bloco @isset/@endisset será executado, caso não exista o que estiver dentro do bloco de código sset/@endisset será ignorado
+
+@isset($fornecedores) //EXEMPLO COM VARIÁVEL
+	Fornecedor: {{$fornecedores[1]['nome']}}
+	<br/>
+	Status: {{$fornecedores[1]['status']}}
+	<br/>
+	@isset($fornecedores[1]['cnpj']) //EXEMPLO COM ÍNDICE DE ARRAY
+		CNPJ: {{$fornecedores[1]['cnpj']}}
+	@endisset
+	<br/>
+@endisset

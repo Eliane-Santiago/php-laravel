@@ -1,0 +1,12 @@
+### BANCO DE DADOS - COMANDOS MYSQL
+
+>>> create database nomeBD;
+
+>>> use nomeBD;
+
+>>> select * from fornecedores;
+
+>>> describe fornecedores;
+
+
+>>> alter table fornecedores add ...

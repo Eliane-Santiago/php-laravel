@@ -1,0 +1,19 @@
+### VERIFICANDO AS VERSÕES
+
+# Verificando a versão que o projeto foi criado pelo cmd (OBS: Esse comando tem que ser verificado na pasta raiz do projeto)
+>>> php artisan --version
+
+# Verificando a versão que o projeto foi criado pelo manualmente
+
+Caminho: Vendor\laravel\framework\srv\Illuminate\Foundation\Application.php
+
+const VERSION = '7.30.6';
+
+# Mostra a versão do laravel
+>>> laravel --version
+
+# Mostra a versão do composer
+>>> composer --version
+
+
+

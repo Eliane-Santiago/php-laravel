@@ -1,0 +1,24 @@
+### BLADE - @UNLESS
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- Esse comando é uma inversão do comando @if/@else
+OBS: Enquanto o @if/@else analise o retorno positivo o @unless faz a analise retorno negativo
+
+//SINTAXE PHP
+
+@php
+
+	if( !<condicao>){ } // Executa se o retorno for true
+	
+@endphp
+
+//SINTAXE BLADE
+
+@unless (!<condicao>) //Executa se o retorno for false
+	//Bloco de código
+@endunless
+
+EX.: 
+@unless ($fornecedores[0]['status'] == 'S') //Executa se o retorno for false
+	Fornecedor Inativo
+@endunless

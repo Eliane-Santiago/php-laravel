@@ -1,0 +1,55 @@
+### View (Visualizações)
+
+O que são View?
+São páginas HTML processadas do lado do servidor e enviada para quem fez a requisição.
+Em resumo as views são as telas das aplicações em html.
+As views são processadas pelo recurso blade é um recurso padrão do framework laravel (porém pode ser usado esse recurso externo como por exemplo o recurso vue).
+
+=> Caminho onde as views ficam organizadas
+pasta resources -> views
+
+=> Estrutura do arquivo views
+
+nomeView.blade.php
+
+Ex.: principal.blade.php
+
+
+# Usando as views
+
+OBS: As views são colocadas dentro da função do controller que deseja usar
+
+//CONTROLLER PRINCIPAL
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class PrincipalController extends Controller
+{
+    //FUNÇÃO PRINCIPAL
+    function principal(){
+        return view('site.principal'); //pasta_view('subpasta_site.nomeView');
+    }
+}
+
+?>
+
+### View - Criando menu de navegação
+
+<!--MENU DE NAVEGAÇÃO-->
+<ul>
+    <li>
+        <a href="\">Principal</a>
+    </li>
+    <li>
+        <a href="\sobre-nos">Sobre-nós</a>
+    </li>
+    <li>
+        <a href="\contato">Contato</a>
+    </li>
+</ul>
+
+
+

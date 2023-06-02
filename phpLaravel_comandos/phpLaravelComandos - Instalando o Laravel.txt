@@ -1,0 +1,28 @@
+### INSTALANDO O LARAVEL DE FORMA GLOBAL
+
+PASSO 01: Instalar o laravel
+site: https://laravel.com/docs/7.x
+
+PASSO 02: Executar o comando abaixo no terminal
+
+>>> composer global require laravel/installer
+
+PASSO 03: Adicionar o endereço abaixo nas variáveis de ambiente do windows na parte de usuários depois feche o terminal e abra novamente para carregar as novas variáveis
+
+%USERPROFILE%\AppData\Roaming\Composer\vendor\bin
+ 
+
+PASSO 04: Configurar o arquivo php.ini
+
+extension=fileinfo (retirar o comentário)
+
+OBS: Se a pasta do projeto existir tem que remover e depois roda a linha para criar o projeto de novo
+
+PASSO 05: Ligando o servidor embutido
+
+>>> cd public
+>>> php -S localhost:9000
+
+
+
+

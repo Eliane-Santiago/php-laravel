@@ -1,0 +1,17 @@
+### MODELOS DE ROTAS WEB USANDO CONTROLLER
+
+=> CAMINHO: 
+PASTA ROUTES -> WEB.PHP
+
+=> ESTRUTURA: 
+Route::get($uri, $controller);
+Route::get('caminhoRota', 'nomeController@funcaoController');
+
+//ROTA PRINCIPAL
+Route::get('/', 'PrincipalController@principal' );
+
+//ROTA SOBRE-NOS
+Route::get('/sobre-nos', 'SobreNosController@sobrenos');
+
+//ROTA CONTATO
+Route::get('/contato', ContatoController@contato');

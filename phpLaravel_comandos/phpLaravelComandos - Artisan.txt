@@ -1,0 +1,38 @@
+### COMANDOS ARTISAN 
+OBS: Esses comandos tem que ser realizados na raiz do projeto
+
+# Acessando a lista de comandos do ARTISAN
+
+>>> php artisan list
+
+# Verificando a versão do laravel framework
+
+>>> php artisan -V
+
+# Liga o servidor
+
+>>> php artisan serve 
+
+# Liga o servidor e troca a porta
+
+>>> php artisan serve --port=9000
+
+# Parar a execução do servidor
+
+>>> Teclar CTRL+C 
+
+# Colocando a aplicação em modo de manutenção
+
+>>> php artisan down
+
+# Retirando a aplicação do modo de manutenção
+
+>>> php artisan up
+
+# Criar Controller
+
+>>> php artisan make:controller PrincipalController
+
+# Lista a rotas criadas na app
+
+>>> php artisan route:list

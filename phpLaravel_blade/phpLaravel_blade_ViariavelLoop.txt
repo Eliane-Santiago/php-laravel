@@ -1,0 +1,71 @@
+### BLADE - VARIÁVEL LOOP
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- O objeto loop fornece informações das interações dos loop's quando está trabalhando com os laços de repetição
+somente FORELSE e FOREACH porque essa estrutura não usa variável de controle. 
+
+OBS: ESTRUTURA
+{{$loop-> InformarQualAtributoDesejaRecuperar}}
+
+EX.: {{$loop->itaration}}
+
+//SINTAXE BLADE
+
+
+@forelse($fornecedores as $indice => $fornecedor)
+
+		Iteração atual: {{$loop->itaration}}
+		<br>
+		Fornecedor: {{$fornecedor['nome']}}
+		<br>
+		Status: {{$fornecedor['status']}}
+		<br>
+		CNPJ: {{$fornecedor['cnpj'] ?? 'Dado não foi preenchido' }}
+		<br>
+		Telefone: ({{$fornecedor['ddd'] ?? ''}}) {{$fornecedor['telefone'] ?? ''}}
+		<br>
+		
+		@if({{$loop->first}})
+			Primeira iteração do loop
+		@endif
+
+		@if({{$loop->last}})
+			Última iteração do loop
+		@endif
+
+		<hr>
+		
+		@empty
+		
+			Não existe fornecedores cadastrados!!!
+		
+@endforelse
+
+//ATRIBUTOS DO OBJETO LOOP
+
+01) {{$loop->itaration}}
+Retorna as posiçções das iterações dos loop
+
+EX.: 
+
+02) {{$loop->first}}
+Retorna primeira iteração do loop
+
+@if({{$loop->first}})
+	Primeira iteração do loop
+@endif
+
+03) {{$loop->last}}
+Retorna a última iteração do loop
+
+@if({{$loop->last}})
+	Última iteração do loop
+@endif
+
+04) {{$loop->count}}
+Retona total de registros dentro do array
+
+EX: Total de registros: {{$loop->count}}
+
+05) @dd($loop)
+Retorna os atributos do objeto loop

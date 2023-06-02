@@ -1,0 +1,11 @@
+### BLADE - IMPRIMINDO VALORES NA TELA
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+OBS: {{ }} é igual a <?= ?>
+
+{{'Texto'}}
+<?='Texto'?>
+
+@php
+	echo 'texto';
+@endphp

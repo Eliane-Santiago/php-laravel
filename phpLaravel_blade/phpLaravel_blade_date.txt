@@ -1,0 +1,37 @@
+### BLADE - DATE (MOSTRA DATA)
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+
+>>> SINTAXE PHP
+
+@php
+	
+	//TAG RESUMIDA
+	<?php echo date('Y')?>
+
+	//TAG RESUMIDA
+	<? date('Y')?>	
+	
+	if(date('H') >= 0 && date('H') <=12){
+		echo"<p>Bom dia!</p>";
+	} elseif(date('H') >=13 && date('H') <=18){
+		echo"<p>Boa tarde!</p>";
+	} else{
+		echo"<p>Boa noite!</p>";
+	}
+
+@endphp
+
+
+>>> SINTAXE BLADE
+
+//CARACTER DE INTERPOLAÇÃO
+{{date('Y')}}
+
+	@if(date('H') >= 0 && date('H') <=12)
+			<p>Bom dia! {{date('H:M:S')}}</p>
+		@elseif(date('H') >=13 && date('H') <=18)
+			<p>Boa tarde! {{date('H')}}</p>
+		@else
+			p>Boa noite! {{date('H')}}</p>
+	@endif

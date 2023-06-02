@@ -1,0 +1,41 @@
+### BLADE - FOR
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- É uma estrutura de repetição
+
+//SINTAXE PHP
+
+@php
+	
+	for($variavelControle; condicao; $variavelIncremental/Decremental){
+		//Bloco de código
+	}
+	
+	for($i = 0; $i < 10; $i++){
+		echo $i;
+	}
+
+@endphp
+
+OBS: 
+
+//SINTAXE BLADE
+
+@for($i = 0; $i < 10; $i++) 
+	{{$i}} <br>
+@endfor
+
+
+@for($i = 0; isset($fornecedores[$i]); $i++)
+
+		Fornecedor: {{$fornecedores[$i]['nome']}}
+		<br>
+		Status: {{$fornecedores[$i]['status']}}
+		<br>
+		CNPJ: {{$fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido' }}
+		<br>
+		Telefone: ({{$fornecedores[$i]['ddd'] ?? ''}}) {{$fornecedores[$i]['telefone'] ?? ''}}
+		<br>
+		<hr>
+
+@endfor

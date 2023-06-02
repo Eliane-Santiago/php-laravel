@@ -1,0 +1,33 @@
+### BLADE - SECTION
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- Extentendo layout (Conceito de classe e herança)
+- Faz o envio do bloco de código para o template extentido
+
+//SINTAXE PHP
+
+@php
+	
+		
+
+@endphp
+
+OBS: 
+
+//SINTAXE BLADE
+01) SECTION SEM  PASSAGEM DE PARAMETROS
+@section('content')
+	//colocar todo código html
+@endsection
+
+02) SECTION COM PASSAGEM DE PARAMETROS STRING
+
+@section('titulo', 'Contato')
+
+OBS: PARA CADA SECTION TEM QUE USAR UM @yield('titulo') NO LUGAR ONDE DESEJA QUE O CONTEÚDO SEJA EXIBIDO
+
+02) SECTION COM PASSAGEM DE PARAMETROS VARIÁVEL VINDA DO CONTROLADOR
+
+@section('titulo', $titulo)
+
+OBS: PARA CADA SECTION TEM QUE USAR UM @yield('titulo') NO LUGAR ONDE DESEJA QUE O CONTEÚDO SEJA EXIBIDO

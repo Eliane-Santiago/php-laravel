@@ -1,0 +1,8 @@
+### BLADE - COMANDOS BLADE
+
+
+01) @dd($fornecedores)
+Imprime variáveis do tipo array associativo
+
+02) ESSE COMANDO VERIFICA A ROTA EM USO E ATIVA O LINK
+{{(Route::current()->getName() === 'site.home' ? 'active' : '')}} 

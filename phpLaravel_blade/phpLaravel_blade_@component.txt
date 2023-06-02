@@ -1,0 +1,104 @@
+### BLADE - COMPONENT 
+OBS: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- Estrutura: @component()
+- Essa tecnologia permite a reutilização de views dentro de outras views de forma eficiente
+
+
+
+OBS(01): A técnica de inclussão é muito parecida com o <@include()>
+
+//SINTAXE PHP
+
+@php
+@endphp
+
+
+//SINTAXE BLADE
+
+@component()
+@endcomponent
+
+>>> PASSOS PARA A UTILIZAÇÃO DO @component()
+
+PASSO 01: Dentro da pasta RESOURCES/VIEW/SITE/LAYOUTS/_COMPONENTS criar o arquivo FORM_CONTATO.BLADE.PHP 
+
+PASSO 02: Dentro do arquivo form_contato.blade.php colocar o código referente ao formulário
+
+PASSO 03: 	Abrir a view que deseja usar uma outro view como component e no lugar específico onde desejar inserir o component colocar o parametro abaixo:
+
+@component('site.layouts._components.form_contato')
+@endcomponent
+
+### BLADE - COMPONENT  ENVIADO PARAMETROS
+
+OBS: TEM DUAS FORMA DE ENVIAR PARAMETROS POR ARRAY ASSOCIATIVO E PELA VARIÁVEL $SLOT
+
+- ARRAY ASSOCIATIVO
+- VARIÁVEL $SLOT
+
+>>> PRIMEIRA FORMA DE PASSAR PARAMETROS PARA OS @component() -> $slot
+
+PASSOS PARA A UTILIZAÇÃO DO $slot
+
+PASSO 01: Dentro da pasta RESOURCES/VIEW/SITE abrir o arquivo CONTATO.BLADE.PHP e dentro das tag @component() inserir toda a codificação que precisar/desejar
+
+EX.: 
+ 
+@component('site.layouts._components.form_contato')
+	<p>A nossa equipe analisará a sua mensagem e retornará o mais breve possível</p>
+	<p>Nosso tempo médio de reposta é de 48 horas</p>
+@endcomponent
+
+PASSO 02: Dentro da pasta RESOURCES/VIEW/SITE/LAYOUTS/_COMPONENTS abrir o arquivo FORM_CONTATO.BLADE.PHP e inserir o comando onde desejar
+
+OBS: Dentro do arquivo da view que estiver usando a components principal, exemplo form_contato.blade.php colocar o código {{$slot}}, onde esse comando for colocado é lá nesse mesmo local que irá aparecer os pamentros do comando @component() segundária.
+
+>>> SEGUNDA FORMA DE PASSAR PARAMETROS PARA OS @component() VIA PARAMETROS
+
+@component('site.layout._components.form_contato', arrayAssociativo[chave => valor])
+@endcomponent
+
+@component('site.layout._components.form_contato', ['x' => 10, 'y' => 'abc'])
+@endcomponent
+
+
+PASSOS PARA A UTILIZAÇÃO DA PASSAGEM DE PARAMETROS VIA PARAMETROS @component()
+
+PASSO 01: Dentro da pasta RESOURCES/VIEW/SITE abrir o arquivo CONTATO.BLADE.PHP e dentro das tag @component() inserir o segundo pamentro que é um array associativo
+
+OBS: fazer esse procedimento dentro do arquivo view principal.blade.php
+
+EX.: 
+ 
+ //ARQUIVO VIEWE -> CONTATO.BLADE.PHP
+@component('site.layouts._components.form_contato', ['classe'=>'borda-preta'])
+	<p>A nossa equipe analisará a sua mensagem e retornará o mais breve possível</p>
+	<p>Nosso tempo médio de reposta é de 48 horas</p>
+@endcomponent
+
+ //ARQUIVO VIEWE -> PRINCIPAL.BLADE.PHP
+@component('site.layout._components.form_contato', ['classe'=>'borda-branca'])
+@endcomponent
+
+PASSO 02: Dentro da pasta RESOURCES/VIEW/SITE/LAYOUTS/_COMPONENTS abrir o arquivo FORM_CONTATO.BLADE.PHP e inserir a variável do array associativo {{$classe}} no local que deseja aplicar as mudanças, no exemplo vamos colocar dentros das tags input's
+
+<form action="{{route('site.contato')}}" method="post">
+    @csrf
+    <input name="nome" type="text" placeholder="Nome" class="{{$classe}}">
+    <br>
+    <input name="telefone" type="text" placeholder="Telefone" class="{{$classe}}">
+    <br>
+    <input name="email" type="text" placeholder="E-mail" class="{{$classe}}">
+    <br>
+    <select name="motivo_contato" class="{{$classe}}">
+        <option value="">Qual o motivo do contato?</option>
+        <option value="1">Dúvida</option>
+        <option value="2">Elogio</option>
+        <option value="3">Reclamação</option>
+    </select>
+    <br>
+    <textarea name="mensagem" class="{{$classe}}">Preencha aqui a sua mensagem</textarea>
+    <br>
+    <button type="submit" class="{{$classe}}">ENVIAR</button>
+</form>

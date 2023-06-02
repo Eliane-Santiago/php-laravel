@@ -1,0 +1,12 @@
+PHP LARAVEl - CONFIGURANDO O TIMEZONE
+
+CAMINHO: config/app.php
+
+TAG: 'timezone' => 'UTC', 
+
+OBS: por padrão vem UTC
+
+
+TAG: 'timezone' => 'America/Fortaleza', 
+
+TAG: 'timezone' => 'America/Sao_Paulo', 

@@ -1,0 +1,32 @@
+### BLADE - ESCAPANDO TAG DE IMPRESSÃO COM SINTAXE BLADE
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+@{{..}}
+OBS: Ao colocar o @ antes {{...}} o interpretados do blade não interpreta as chaves e nem o que está dentro das chaves faz apenas a impressão em tela
+
+//SINTAXE BLADE
+
+<h3>Fornecedores</h3>
+
+
+@isset($fornecedores)
+
+	@forelse($fornecedores as $indice => $fornecedor)
+
+		Fornecedor: @{{$fornecedor['nome']}}
+		<br>
+		Status: @{{$fornecedor['status']}}
+		<br>
+		CNPJ: @{{$fornecedor['cnpj'] ?? 'Dado não foi preenchido' }}
+		<br>
+		Telefone: (@{{$fornecedor['ddd'] ?? ''}}) @{{$fornecedor['telefone'] ?? ''}}
+		<br>
+		<hr>
+
+	@empty
+
+		Não existe fornecedores cadastrados!!!
+
+	@endforelse
+	
+@endisset

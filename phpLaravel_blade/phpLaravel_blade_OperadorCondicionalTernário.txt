@@ -1,0 +1,26 @@
+### BLADE - OPERADOR CONDICIONAL TERNÁRIO
+
+- Recurso nativo do PHP
+- É um atalho do comando condicioanl IF escrito em uma única linha
+
+
+//SINTAXE PHP
+
+@php
+
+	//OPERADOR CONDICIONAL TERNÁRIO
+	//CONDICAO ? SE VERDADE : SE FALSO;
+	
+	//echo isset($fornecedores[1]['cnpj'])?'CNPJ informado': 'CNPJ não informado';
+	
+	$cnpj = isset($fornecedores[1]['cnpj'])?'CNPJ informado': 'CNPJ não informado';
+	
+	echo $cnpj;
+	
+@endphp
+
+OBS: o operador ternário pode ser encadeado porém na é indicado
+CONDICAO ? SE VERDADE : (CONDICAO ? SE VERDADE : SE FALSO);
+
+
+

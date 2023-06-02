@@ -1,0 +1,41 @@
+### BLADE - @EMPTY
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- Operador EMPTY serve para saber se uma variável/índice de array estão ou não vazios
+
+OBS: No PHP o EMPTY é usado dentro dos blocos IF/ELSE
+
+//SINTAXE PHP
+
+@php
+
+	if( empty($variavel){ } //Retorna true se a variavel tiver vazia
+	
+@endphp
+
+OBS: VARIÁVEIS VAZIA NO PHP SÃO
+- '' //String vazia
+- 0
+- 0.0
+- '0'
+- null
+- false
+- array() //Array vazio
+- $variavel //Variavel sem valor atribuido
+
+//SINTAXE BLADE
+
+@isset($fornecedores) //EXEMPLO COM VARIÁVEL
+	Fornecedor: {{$fornecedores[1]['nome']}}
+	<br/>
+	Status: {{$fornecedores[1]['status']}}
+	<br/>
+	@isset($fornecedores[1]['cnpj']) //EXEMPLO COM ÍNDICE DE ARRAY
+		CNPJ: {{$fornecedores[1]['cnpj']}}
+		@empty($fornecedores[1]['cnpj']) 
+			Vazio
+		@endempty
+	@endisset
+	<br/>
+@endisset
+

@@ -1,0 +1,44 @@
+### BANCO DE DADOS - MODELS
+
+- Models são as classes que representam os objetos da aplicação
+- Através dos models podemos trazer para os nossos códigos os beneficios da programação orientada a objetos
+- Podemos fazer a reutilização de códigos
+
+OBS(01): Para cada model criar uma migrations quando o objetivo for armazenar os dados/atributos do objeto no banco de dados
+
+OBS(02): Os nomes das Model são escritos sempre no singular
+
+>>> CRIANDO MODEL
+OBS:  Abrir o terminal e digitar o comando abaixo
+
+php artisan make:model Fornecedor
+
+>>> CRIANDO AS MODELS E AS MIGRATIONS SIMULTANEAMENTE
+OBS(01):  Abrir o terminal e digitar o comando abaixo
+
+php artisan make:model SiteContato -m
+
+OBS(02): -m cria as MIGRATIONS
+
+
+>>> ABRINDO O ARQUIVO DA MODEL CRIADA
+
+CAMINHO: Fica dentro da raiz da pasta APP
+
+EX.:
+siteContato.php
+
+ESTRUTURA MODEL: 
+
+EX.:
+
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class SiteContato extends Model
+{
+    //
+}

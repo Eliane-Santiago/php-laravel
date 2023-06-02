@@ -1,0 +1,12 @@
+### BLADE - ASSETS DE UMA PÁGINA WEB (FAZ PARTE DO METHODO HELP)
+OBS(01): ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+OBS(02): TODOS OS ARQUIVOS ASSETS FICA NA PASTA PUBLIC (public/...)
+
+- É tudo que vai anexo a uma página HTML que complementa a liguagem de marcação de texto
+
+{{ asset('img/logo.phg') }}
+
+OBS: DENTRO DA PASTA PUBLIC FOI CRIADO A PASTA IMG E ENTRO DA PASTA IMG FOI COLOCADO A IMAGEM QUE ESTÁ EM USO NO ASSET ACIMA
+
+EX.: 
+<img src="{{ asset('img/logo.phg') }}">

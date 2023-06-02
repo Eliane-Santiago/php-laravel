@@ -1,0 +1,116 @@
+### Controllers (Controladores)
+
+O que são controllers?
+É o mesmo que classe
+
+OBS(01): CADA ROTA TEM QUE ESTÁ ASSOCIADA A UM CONTROLADOR
+
+OBS(02): E OS CONTROLADORES SÃO COMPOSTOS POR AÇÕES / FUNÇÕES
+
+OBS(03): É NO CONTROLADOR QUE DEFINIMOS AS REGRAS DA APLICAÇÃO 
+
+
+# Estrutura dos Controladores (Controllers)
+
+Controller1
+action1();
+action2();
+action3();
+action4();
+
+Controller2
+action1();
+action2();
+action3();
+action4();
+
+
+### CRIANDO OS CONTROLADORES
+
+# Estrutura de nome dos controllers
+
+- PrincipalController
+- SobreNosController
+- ContatoController
+
+# Para criar os controllers rteRodar os comandos no terminal
+
+OBS: TEM QUE EXECUTAR ESSES COMANDO NA PASTA RAIZ DO PROJETO
+
+01) Criando controller
+
+>>> php artisan make:controller PrincipalController
+
+>>> php artisan make:controller SobreNosController
+
+>>> php artisan make:controller ContatoController
+
+# Pasta onde fica os controller's
+
+app -> Http -> Controllers
+
+
+# PrincipalController
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ContatoController extends Controller
+{
+    //Função Principal
+	public function principal( ){
+	
+		echo'Página Principal';
+	
+	}
+}
+
+# SobreNosController
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class SobreNosController extends Controller
+{
+    //Função Principal
+    public function sobreNos(){
+        echo 'Página Sobre nós';
+    }
+}
+
+
+# ContatoController
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ContatoController extends Controller
+{
+    //Função Principal
+    public function contato(){
+        echo 'Págin Contato...';
+    }
+}
+
+# Associando a Controller a uma route
+
+OBS: Depois que finalizar os controllers tem que fazer a associação do controller a route.
+Ir para a pasta routes e acessar o arquivo web.php
+
+Route::get('/', 'PrincipalController@principal');
+
+Route::get('/sobre-nos', 'SobreNosController@sobreNos');
+
+Route::get('/contato', 'ContatoController@contato');
+
+//Estrutura
+Route::get('caminhoRota', 'nomeController@funcaoController');

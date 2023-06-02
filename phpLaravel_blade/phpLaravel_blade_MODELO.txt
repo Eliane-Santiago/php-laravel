@@ -1,0 +1,16 @@
+### BLADE - 
+OBS: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- 
+
+//SINTAXE PHP
+
+@php
+	
+		
+
+@endphp
+
+OBS: 
+
+//SINTAXE BLADE

@@ -1,0 +1,73 @@
+### IINSTALAÇÃO DO COMPOSER
+
+#01 - Site
+getcomposer.org
+
+OBS (01): Antes de instalar o Composer tem que ter o php instalado primeiro
+
+OBS (02): O XAMPP já trás o php, MySQL e Apache instalado
+
+OBS (03): Ideal usar o php instalado puramente 
+
+#02 - Clicar em opção Download 
+
+#03 - Clicar na opção Composer-Setup.exe
+
+#04 - Depois que baixar é só executar o instalador Composer-Setup.exe
+
+#05 - Select install mode -> Install for ALL users(recommended)
+
+#06 - clica em yes
+
+#07 - Installation Options -> Next
+
+#08 - Settings Check -> Selecionar o local onde o php foi instalado (xampp)/ (Disco Local C:/php-7.4.6/php.exe) - Next
+
+OBS: o ideal é usar a instalação do php puramente 
+
+#09 - esperar carregar
+
+#10 - PHP Configurarion Error
+Obs: caso parecer o erro de não localizar o php.ini 
+Solução: ir lá na pasta de configuração do php e pegar o arquivo php.ini-development e cópiar e depois renomear para php.ini
+
+Depois tentar de novo...
+
+Vai aparecer basicamente a mesma página é só clicar em Next
+
+#11 - Proxy Settings -> Next
+
+Caso tenha segurança na rede
+
+Obs: no meu caso não configurar
+
+#12 - Ready to Install -> Install
+
+#13 - Aguardar a instalação
+
+#14 - Information -> Next
+ OBS: Se o cmd estiver aberto tem que fechar e depois abrir novamente para aplicar a instalação 
+
+#15 - Completing Composer Setup -> Finish
+
+#16 - Testando o Composer
+
+Composer --version 
+
+### Configurações Globais
+
+01) configurando pacotes
+
+cmd -> Composer config -g repo.packagist composer https://packagist.org
+
+OBS(01): ESSE COMANDO É PARA EXECUTAR SÓ UMA VEZ NA PASTA ONDE OS PROJETOS SERÃO CRIADOS 
+
+OBS(02): https://packagist.org
+É UM REPOSITÓRIO DE PACOTES LARAVEL 
+
+02) configurando protocolos
+
+cmd -> composer config -g github-protocols https ssh 
+
+
+OBS(01): ESSE COMANDO É PARA EXECUTAR SÓ UMA VEZ NA PASTA ONDE OS PROJETOS SERÃO CRIADOS

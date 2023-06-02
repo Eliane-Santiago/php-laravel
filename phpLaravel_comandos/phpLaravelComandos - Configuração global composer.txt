@@ -1,0 +1,5 @@
+### DIGITAR OS COMANDOS ABAIXO VIA TERMINAL DENTRO DA PASTA ONDE O PROJETO SERÁ CRIADO
+
+>>> composer config -g repo.packagist composer https://packagist.org
+
+>>> composer config -g github-protocols https ssh

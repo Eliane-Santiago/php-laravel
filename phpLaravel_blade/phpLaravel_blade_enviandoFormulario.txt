@@ -1,0 +1,118 @@
+### BLADE - ENVIANDO FORMULÁRIO
+OBS: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/contato.blade.php...)
+
+- PARA ENVIAR UM FORMULÁRIO DEVEMOS DEFINIR AS "ACTION"(QUAL ROTA O FORMULÁRIO SERÁ ENVIADO) E OS "METHOD"(VERBO HTTP GET/POST)
+
+
+01) ENVIANDO FORMULÁRIO VIA GET (MÉTODO PADRÃO)
+
+//SINTAXE PHP
+
+@php
+@endphp
+
+OBS: 
+
+//SINTAXE BLADE
+
+action="{{ route('site.contato')}}" method="get"
+OBS(01): USAR ESSE ATRIBUTOS ACIMA DENTRO DA TAG FORM
+
+name="nome"
+OBS(02): USAR O ATRIBUTO NOME NAS TAG INPUT, SELECT E TEXTAREA
+
+OBS(03): ABRIR O CONTROLLER CONTATO E COLOCAR O COMANDO ABAIXO PARA TESTE 
+var_dump($_GET);
+
+OBS(04): QUANDO ENVIAMOS UM FORMULÁRIO VIA GET OS DADOS ENVIADOS FICAM EXPOSTOS NA URL 
+
+<form action="{{ route('site.contato')}}" method="get">
+	<input name="nome" type="text" placeholder="Nome" class="borda-preta">
+	<br>
+	<input name="telefone" type="text" placeholder="Telefone" class="borda-preta">
+	<br>
+	<input name="email" type="text" placeholder="E-mail" class="borda-preta">
+	<br>
+	<select name="mptivo_contato" class="borda-preta">
+		<option value="">Qual o motivo do contato?</option>
+		<option value="1">Dúvida</option>
+		<option value="2">Elogio</option>
+		<option value="3">Reclamação</option>
+	</select>
+	<br>
+	<textarea name="mensagem" class="borda-preta">Preencha aqui a sua mensagem</textarea>
+	<br>
+	<button type="submit" class="borda-preta">ENVIAR</button>
+</form>
+
+
+02) ENVIANDO FORMULÁRIO VIA POST
+
+OBS(01):  O MÉTODO POST EXIGE QUE TODOS OS FORMULÁRIOS SUBMETIDO VIA POST TENHA UM TOKEN OU SEJA UMA IDENTIFICAÇÃO QUE GARANTA QUE O FORMULÁRIO ESTÁ SENDO ENVIADO VIA POST PELO BROWSER OU SEJA O CLIENTE DA SESSÃO
+
+OBS(02): PARA INCLUIR O TOKEN NOS FORMULÁRIOS VIA LARAVEL É SÓ USAR O COMANDO @CSRF  DENTRO DA TAG FORM
+
+//SINTAXE PHP
+
+@php
+@endphp
+
+OBS: 
+
+//SINTAXE BLADE
+
+PASSO 01 - ACRESCENTAR O method="post" dentro da tag FORM
+
+<form action="{{ route('site.contato')}}" method="post">
+	<input name="nome" type="text" placeholder="Nome" class="borda-preta">
+	<br>
+	<input name="telefone" type="text" placeholder="Telefone" class="borda-preta">
+	<br>
+	<input name="email" type="text" placeholder="E-mail" class="borda-preta">
+	<br>
+	<select name="motivo_contato" class="borda-preta">
+		<option value="">Qual o motivo do contato?</option>
+		<option value="1">Dúvida</option>
+		<option value="2">Elogio</option>
+		<option value="3">Reclamação</option>
+	</select>
+	<br>
+	<textarea name="mensagem" class="borda-preta">Preencha aqui a sua mensagem</textarea>
+	<br>
+	<button type="submit" class="borda-preta">ENVIAR</button>
+</form>
+
+PASSO 02 - ACRESCENTAR A ROTA POST NO ARQUIVOS DE ROTAS (web.php)
+
+Route::post('/contato', 'ContatoController@contato')->name('site.contato');
+
+OBS: Pode deixar a rota get também pois o laravel aceita as duas rotas pois tem verbos http diferentes
+Route::get('/contato', 'ContatoController@contato')->name('site.contato');
+
+PASSO 03 - ACRESCENTAR O COMANDO @csrf DENTRO DA TAG FORM
+OBS: Se não usar esse comando @csrf a página do formulário vai dar erro de página expirada cógido 419
+
+<form action="{{ route('site.contato')}}" method="post">
+	@csrf
+	<input name="nome" type="text" placeholder="Nome" class="borda-preta">
+	<br>
+	<input name="telefone" type="text" placeholder="Telefone" class="borda-preta">
+	<br>
+	<input name="email" type="text" placeholder="E-mail" class="borda-preta">
+	<br>
+	<select name="mptivo_contato" class="borda-preta">
+		<option value="">Qual o motivo do contato?</option>
+		<option value="1">Dúvida</option>
+		<option value="2">Elogio</option>
+		<option value="3">Reclamação</option>
+	</select>
+	<br>
+	<textarea name="mensagem" class="borda-preta">Preencha aqui a sua mensagem</textarea>
+	<br>
+	<button type="submit" class="borda-preta">ENVIAR</button>
+</form>
+
+PASSO 04 - ALTERAR A VARIÁVEL SUPERGLOBAL PARA var_dump($_POST);
+OBS: Esse arquivo ficar na página ContatoController.php
+
+PASSO 05 - testar

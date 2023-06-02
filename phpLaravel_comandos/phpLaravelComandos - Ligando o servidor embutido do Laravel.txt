@@ -1,0 +1,16 @@
+OBS: É Para abrir o powerShell na pasta do projeto (Tecla Shift + Botão Direito do mouse -> Abrir powerShell aqui)
+
+### LIGANDO O SERVIDOR EMBUTIDO DO LARAVEL
+
+PASSO 01: Acessar a pasta public que fica dentro da pasta do projeto
+
+>>> cd public
+
+PASSO 02: Digitar o cmd abaixo
+
+>>> php -S localhost:9000 
+ 
+PASSO 03: Testa o endereço abaixo no navegador
+
+localhost:9000
+

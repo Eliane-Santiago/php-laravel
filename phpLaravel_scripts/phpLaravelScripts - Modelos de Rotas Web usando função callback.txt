@@ -1,0 +1,22 @@
+### MODELOS DE ROTAS WEB USANDO FUNÇÃO CALLBACK
+
+=> CAMINHO: 
+PASTA ROUTES -> WEB.PHP
+
+=> ESTRUTURA: 
+Route::get($uri, $callback);
+
+//ROTA PRINCIPAL
+Route::get('/', function () {
+    return 'Olá, seja bem vindo ao curso!';
+});
+
+//ROTA SOBRE-NOS
+Route::get('/sobre-nos', function () {
+    return 'Sobre-nós';
+});
+
+//ROTA CONTATO
+Route::get('/contato', function () {
+    return 'Contato';
+});

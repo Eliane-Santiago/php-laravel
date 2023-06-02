@@ -1,0 +1,14 @@
+### BLADE - INCLUDE
+OBS: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- ACRESCENDA O CONTEUDO TODO DE OUTRO ARQUIVO NO EXATO PONTO ONDE O INCLUDE É USADO
+
+//SINTAXE PHP
+
+@php
+@endphp
+
+
+//SINTAXE BLADE
+
+@include('site.layout._partials.topo')

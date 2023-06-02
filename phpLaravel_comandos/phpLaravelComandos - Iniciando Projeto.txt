@@ -1,0 +1,20 @@
+OBS: Para abrir o powerShell na pasta onde o projeto será criado (Tecla Shift + Botão Direito do mouse -> Abrir powerShell aqui
+
+### CRIANDO PROJETOS VIA COMPOSER
+
+>>> composer create-project --prefer-dist laravel/laravel:^7.0 blog
+>>> composer create-project --prefer-dist laravel/laravel:^7.0 nomeProjetoViaComposer
+
+>>> composer create-project --prefer-dist laravel/laravel:^7.0 nome_do_projeto
+>>> composer create-project --prefer-dist laravel/laravel:^7.0  app_super_gestao
+
+ >>> composer create-project --prefer-dist laravel/laravel:^7.0  app_super_gestao
+
+
+
+### CRIANDO PROJETOS DE FORMA GLOBAL
+
+>>> laravel new nome_do_projeto
+>>> composer create-project --prefer-dist laravel/laravel:^7.0 nome_do_projeto
+>>> composer create-project --prefer-dist laravel/laravel:^7.0 app_super_gestao
+

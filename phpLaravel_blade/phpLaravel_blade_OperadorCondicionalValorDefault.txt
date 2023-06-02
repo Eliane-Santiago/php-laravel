@@ -1,0 +1,45 @@
+### BLADE - OPERADOR CONDICIONAL VALOR DEFAULT
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- Funciona como um atalho do Operador Condicional Ternário (Condicional IF escrito em uma única linha)
+
+OBS:  {{$variável ?? ValorPadrão' }}
+
+
+//SINTAXE PHP
+
+@php
+
+	//OPERADOR CONDICIONAL TERNÁRIO
+	//CONDICAO ? SE VERDADE : SE FALSO;
+	
+	//echo isset($fornecedores[1]['cnpj'])?'CNPJ informado': 'CNPJ não informado';
+	
+	$cnpj = isset($fornecedores[1]['cnpj'])?'CNPJ informado': 'CNPJ não informado';
+	
+	echo $cnpj;
+	
+@endphp
+
+OBS: o operador ternário pode ser encadeado porém na é indicado
+CONDICAO ? SE VERDADE : (CONDICAO ? SE VERDADE : SE FALSO);
+
+//SINTAXE BLADE
+
+<h3>Fornecedores</h3>
+
+
+@isset($fornecedores)
+	Fornecedor: {{$fornecedores[1]['nome']}}
+	<br/>
+	Status: {{$fornecedores[1]['status']}}
+	<br/>
+	CNPJ: {{$fornecedores[1]['cnpj'] ?? 'Dado não foi preenchido' }} 
+	<br/>
+	<!--
+		COMENTÁRIO
+		$variável testada não estiver definida (isset)
+		ou
+		#variável testada possuir o valor null
+	-->
+@endisset

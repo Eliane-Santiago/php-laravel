@@ -1,0 +1,25 @@
+### BLADE - TOKEN CSRF
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- SIGNIFICADO CSRF É CROSS-SITE REQUEST FORGERY OU FALSIFICAÇÃO DE SOLICITAÇÃO ENTRE SITES
+
+OBS: Cria um token da página é só permite acessar as informações do serviço se a página possue um token no caso de página falsa a página consegue usar o cokies do navegador mas não consegue gera ou ter acesso ao token da página original.
+
+//SINTAXE PHP
+
+@php
+	
+		
+
+@endphp
+
+OBS: 
+
+//SINTAXE BLADE
+
+OBS: Colocar o comando dentro da tag form
+
+<form>
+	@csrf
+	
+</form>

@@ -1,0 +1,47 @@
+### BLADE - @IF/@ELSE
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+//SINTAXE PHP
+
+@php
+	
+	if( ){
+	
+	}else if( ){
+	
+	}else{
+	
+	}
+	
+@endphp
+
+//SINTAXE BLADE
+
+Exemplo 01________________________________________________________
+
+@if(count($fornecedores)>0 && count($fornecedores) <10)
+	<h3>Existem alguns fornecedores cadastrados</h3>
+
+@elseif(count($fornecedores)>10)
+	<h3>Existem vários fornecedores cadastrados</h3>
+
+@else
+	<h3>Ainda não existem fornecedores cadastrados</h3>
+	
+@endif
+
+__________________________________________________________________
+
+Exemplo 02________________________________________________________
+
+OBS: OS DOIS @IF IMPRIME O MESMO RESULTADO
+
+@if($fornecedores[0]['status'] == 'N')
+    Fornecedor Inativo
+@endif
+
+@if( !($fornecedores[0]['status'] == 'S') )
+    Fornecedor Inativo
+@endif
+
+__________________________________________________________________

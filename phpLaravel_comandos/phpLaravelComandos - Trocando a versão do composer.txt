@@ -1,0 +1,20 @@
+### COMPOSER - MUDANDO A VERSÃO
+
+PASSO 01: Acessar o local onde o arquivo composer.phar está
+
+>>> C:\ProgramData\ComposerSetup\bin\
+
+PASSO 02: Renomear o arquivo colocando o número da versão
+
+Ex.: composer_2.4.4.phar
+
+PASSO 03: Baixar o composer.phar da versão que deseja usar no site https://getcomposer.org/download/
+
+
+PASSO 04: Vai lá na parte onde fica os históricos das versões "Composer (composer.phar) versions history" e clica encima do número da versão que precisa baixar 
+
+PASSO 05: Pega o arquivo composer.phar e coloca na pasta bin do cmposer
+
+>>> C:\ProgramData\ComposerSetup\bin\
+
+obs: quando quiser mudar a versão é só renomear o arquivo composer.phar e depois retirar o renomeado do arquivo composer.phar que desejar usar

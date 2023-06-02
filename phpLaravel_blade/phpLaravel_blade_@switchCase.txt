@@ -1,0 +1,43 @@
+### BLADE - OPERADOR CONDICIONAL SWITCH / CASE
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- Funciona de forma analoga ao Operador Condicional IF/ELSE.
+
+//SINTAXE PHP
+
+@php
+
+	switch($fornecedores[1]['ddd']){
+		case '11':
+			echo 'São Paulo/SP';
+			break;
+		case '32':
+			echo 'Fuiz de Fora/MG';
+			break;
+		case '85':
+			echo 'Fortaleza/CE';
+			break;
+		default:
+			echo 'Cidade e Estado não encontrado';
+	}
+@endphp
+
+OBS: o operador ternário pode ser encadeado porém na é indicado
+CONDICAO ? SE VERDADE : (CONDICAO ? SE VERDADE : SE FALSO);
+
+//SINTAXE BLADE
+
+
+	@switch($fornecedores[1]['ddd'])
+		@case ('11')
+			São Paulo/SP
+			@break
+		@case ('32')
+			Fuiz de Fora/MG
+			@break
+		@case ('85')
+			Fortaleza/CE
+			@break
+		@default
+			Cidade e Estado não encontrado
+	@endswitch

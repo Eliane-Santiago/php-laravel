@@ -1,0 +1,238 @@
+### ENVIAR PARAMETROS PELAS ROUTES
+
+//ROTA CONTATO COM 1 PARAMETROS
+Route::get('/contato/{nome}', function (string $nome) {
+   echo 'Estamos aqui: '.$nome;
+});
+
+>>> http://127.0.0.1:8000/contato/Eliane (chamada da route no navegador)
+
+//ROTA CONTATO COM MAIS DE 1 PARAMETROS
+Route::get('/contato/{nome}/{categoria}', function (string $nome, string $categoria) {
+   echo 'Estamos aqui: '.$nome.' - '.$categoria;
+});
+
+>>> http://127.0.0.1:8000/contato/Eliane/Teste (chamada da route no navegador) //Nesse exemplo estamos passando os parametros via url para fins de testes
+
+OBS: Quando a route tiver mais de um parametro tem que passar todos os parametro solicitados na route porque se não dar erro
+ 
+Route::get(
+	'/contato/{nome}/{categoria}/{assunto}/{mensagem}', 
+	function (string $nome, string $categoria, string $assunto, string $mensagem) {
+		echo "Estamos aqui: $nome - $categoria -  $assunto -  $mensagem";
+});
+
+>>> http://127.0.0.1:8000/contato/Eliane/Teste1/Teste2/Teste3 (chamada da route no navegador) //Nesse exemplo estamos passando os parametros via url para fins de testes
+
+### ENVIAR PARAMETROS OPCIONAIS PELAS ROUTES
+
+//ROTA CONTATO COM MAIS DE 1 PARAMETROS OPCIONAIS
+Route::get(
+	'/contato/{nome}/{categoria?}/{assunto?}/{mensagem?}', 
+	function (
+		string $nome, 
+		string $categoria  = 'não informado', 
+		string $assunto  = 'não informado', 
+		string $mensagem = 'não informado'
+	){
+		echo "Estamos aqui: $nome - $categoria -  $assunto -  $mensagem";
+	}
+);
+
+>>> http://127.0.0.1:8000/contato/Eliane (chamada da route no navegador) //Nesse exemplo estamos passando os parametros via url para fins de testes
+
+OBS: Nesse caso não vai dar erro porque todos os outros parametros são opcionas e também foi atribuido um valor padrão a cada variável porém a omissão dos parametros tem que ocorrer da direita para a esquerda
+
+>>> http://127.0.0.1:8000/contato/Eliane//Teste2/ (chamada da route no navegador)
+OBS: Se a route fica assim dar erro
+
+### TRATANDO ROUTES COM EXPRESSÃO REGULARES
+
+OBS: Verificando se o parametro recebido está de acordo com com o esperado
+
+->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+'); // ->where('nomeParametro', 'expressaoRegular')
+
+//ROTA CONTATO COM MAIS DE 1 PARAMETROS
+Route::get(
+	'/contato/{nome}/{categoria_id?}', 
+	function (
+		string $nome, 
+		int $categoria_id  = 1 //1 - 'Informação'
+	){
+		echo "Estamos aqui: $nome - $categoria_id ";
+	}
+)->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+'); // ->where('nomeParametro', 'expressaoRegular')
+
+### ENCAMINHANDO PARAMETROS DA ROTA PARA A CONTROLLER 
+
+//ROUTE TESTE VIA CONTROLLER (routes/web.php)
+
+Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
+
+//CONTROLLER TESTE (app/Http/Controllers/TesteController.php)
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class TesteController extends Controller
+{
+    //Função Principal
+	public function teste(int $p1, int $p2){
+	
+		return "A soma de $p1 + $p2 é: ".($p1+$p2);
+	
+	}
+}
+
+?>
+
+
+### ENCAMINHANDO PARAMETROS DA CONTROLLER PARA A VIEW 
+
+OBS: Os parametros encaminhados das Controllers para as Views pode ser feito via:
+- Array Associativo
+- Método nativo do php: Compact(). Esse método cria um array associativo baseado em parametros na prática
+- Método With()
+
+
+//ROUTE TESTE VIA CONTROLLER (routes/web.php)
+
+Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
+
+//CONTROLLER TESTE RETORNANDO UMA VIEW (app/Http/Controllers/TesteController.php)
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class TesteController extends Controller
+{
+    //Função Principal
+	public function teste(int $p1, int $p2){
+	
+		//echo "A soma de $p1 + $p2 é: ".($p1+$p2);
+
+		//Retorno da View
+        return view('site.teste');
+	
+	}
+}
+
+?>
+
+//VIEW TESTE (resources/views/site/teste.blade.php)
+OBS: Aqui fica o código HTTP
+
+P1 = {{$p1}}
+P1 = {{$p2}}
+
+01) ARRAY ASSOCIATIVO
+
+['x'=>$p1, 'y'=>$p2]
+
+OBS(01): A chave do array associativo da controller que é passado como variável para a view
+Ex.: A chave 'X' do array associativo na controller,  na view é a {{$X}}
+
+OBS(02): O ideal é que a chave do Array Associativo tenha o mesmo nome do valor da chave ou tenha uma relação bem semelhante
+EX.: ['p1'=>$p1, 'p2'=>$p2]
+
+//CONTROLLER TESTE RETORNANDO UMA VIEW (app/Http/Controllers/TesteController.php)
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class TesteController extends Controller
+{
+    //Função Principal
+	public function teste(int $p1, int $p2){
+
+		//Retorno da View
+        return view('site.teste', ['x'=>$p1, 'y'=>$p2]);
+	
+	}
+}
+
+?>
+
+//VIEW TESTE (resources/views/site/teste.blade.php)
+OBS: Aqui fica o código HTTP
+
+P1 = {{$x}}
+<br />
+P2 = {{$y}}
+
+02) MÉTODO COMPACT()
+Método nativo do php: Compact(). 
+Esse método cria um array associativo baseado em parametros na prática
+
+Compact('p1', 'p2'));
+OBS: No método Compact() os parametros tem que ser passado via string
+
+//CONTROLLER TESTE RETORNANDO UMA VIEW (app/Http/Controllers/TesteController.php)
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class TesteController extends Controller
+{
+    //Função Principal
+	public function teste(int $p1, int $p2){
+
+		//Retorno da View
+        return view('site.teste', Compact('p1', 'p2'));
+	
+	}
+}
+
+?>
+
+//VIEW TESTE (resources/views/site/teste.blade.php)
+OBS: Aqui fica o código HTTP
+
+P1 = {{$p1}}
+<br />
+P2 = {{$p2}}
+
+03) MÉTODO WITH()
+
+->with('nomeVariavel', variavel)->with('nomeVariavel', variavel)...
+EX.: ->with('x',  $p1)->with('y',  $p2);
+
+//CONTROLLER TESTE RETORNANDO UMA VIEW (app/Http/Controllers/TesteController.php)
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class TesteController extends Controller
+{
+    //Função Principal
+	public function teste(int $p1, int $p2){
+
+		//Retorno da View
+        return view('site.teste')->with('x',  $p1)->with('y',  $p2);
+	
+	}
+}
+
+?>
+
+//VIEW TESTE (resources/views/site/teste.blade.php)
+OBS: Aqui fica o código HTTP
+
+P1 = {{$x}}
+<br />
+P2 = {{$y}}

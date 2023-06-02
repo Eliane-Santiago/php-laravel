@@ -1,0 +1,19 @@
+### BLADE - YIELD
+OSB: ESSES CODIGOS SÃO FEITOS NOS ARQUIVOS VIEW (resources/views/...)
+
+- COLOCAR ESSE COMANDO ONDE QUER QUE O CÓDIGO SEJA APRESENTADO
+- Serve para indicar no template extendido onde os blocos das sessões deverão ser exibidos
+
+//SINTAXE PHP
+
+@php
+	
+		
+
+@endphp
+
+OBS: 
+
+//SINTAXE BLADE
+
+@yield('content')

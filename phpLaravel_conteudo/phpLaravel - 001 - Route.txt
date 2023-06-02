@@ -1,0 +1,150 @@
+### Route (Rotas)
+
+# O que são rotas?
+São o caminho onde cada página está sendo servida
+
+
+# Tipos de Rotas (Arquivos de config das rotas)
+API
+Channels
+Console
+Web
+
+### MODELOS DE ROTAS WEB USANDO FUNÇÃO CALLBACK
+
+=> CAMINHO: 
+PASTA ROUTES -> WEB.PHP
+
+=> ESTRUTURA: 
+Route::get($uri, $callback); 
+
+//ROTA PRINCIPAL
+Route::get('/', function () {
+    return 'Olá, seja bem vindo ao curso!';
+});
+
+//ROTA SOBRE-NOS
+Route::get('/sobre-nos', function () {
+    return 'Sobre-nós';
+});
+
+//ROTA CONTATO
+Route::get('/contato', function () {
+    return 'Contato';
+});
+
+### MODELOS DE ROTAS WEB USANDO CONTROLLER
+
+=> CAMINHO: 
+PASTA ROUTES -> WEB.PHP
+
+=> ESTRUTURA: 
+Route::get($uri, $controller);
+Route::get('caminhoRota', 'nomeController@funcaoController');
+
+//ROTA PRINCIPAL
+Route::get('/', 'PrincipalController@principal' );
+
+//ROTA SOBRE-NOS
+Route::get('/sobre-nos', 'SobreNosController@sobrenos');
+
+//ROTA CONTATO
+Route::get('/contato', ContatoController@contato');
+
+
+
+
+
+### AGRUPANDO ROUTES
+
+//ROTAS AGRUPADAS NO PREFIXO APP
+Route::prefix('/app')->group(function(){
+	Route::get('/login', function () { return 'Login'; });
+	Route::get('/clientes', function () { return 'Clientes'; });
+	Route::get('/fornecedores', function () { return 'Fornecedores'; });
+	Route::get('/produtos', function () { return 'Produtos'; });
+});
+
+OBS: FORMA DEVE SER ACESSADA PELO NO NAVEGADOR
+127.0.0.1:8000/app/clientes
+127.0.0.1:8000/app/login
+127.0.0.1:8000/app/fornecedores
+127.0.0.1:8000/app/produtos
+
+
+### NOMEANDO AS AS ROTAS NO ARQUIVO ROUTE WEB
+
+EXEMPLO: ...->name('site.contato')
+
+Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::get('/sobre-nos', 'SobreNosController@sobrenos')->name('site.sobre-nos');
+Route::get('/contato', 'ContatoController@contato')->name('site.contato');
+
+//ROTAS AGRUPADAS NO PREFIXO APP
+Route::prefix('/app')->group(function(){
+    Route::get('/clientes', function () { return 'Clientes'; })->name('app.clientes');
+    Route::get('/fornecedores', function () { return 'Fornecedores'; })->name('app.fornecedores');
+    Route::get('/produtos', function () { return 'Produtos'; })->name('app.produtos');
+});
+
+
+//FORMA QUE A ROTA NOMEADA É RECUPERADA NO ARQUIVO VIEW
+
+EXEMPLO: <a href="{{route('site.index')}}">Principal</a>
+
+<h3>Principal (View)</h3>
+
+<!--MENU DE NAVEGAÇÃO-->
+<ul>
+    <li>
+        <a href="{{route('site.index')}}">Principal</a>
+    </li>
+    <li>
+        <a href="{{route('site.sobrenos')}}">Sobre-nós</a>
+    </li>
+    <li>
+        <a href="{{route('site.contato')}}>Contato</a>
+    </li>
+</ul>
+
+### DIRECIONANDO ROTAS
+
+01) ATRAVÉS DO REDIRECT DO OBJETO ROUTE
+
+//Rota 1
+Route::get('/rota1', function(){
+	echo 'Rota 1';
+})->name('site.rota1');
+
+
+//Route::redirect('rodaOrigem', 'rotaDestino');
+Route::redirect('/rota2', '/rota1');
+
+02) DENTRO DAS FUNÇÕES DE CALLBACK/CONTROLLER
+
+//Rota 1
+Route::get('/rota1', function(){
+	echo 'Rota 1';
+})->name('site.rota1');
+
+
+//Rota 2
+Route::get('/rota2', function(){
+	return redirect()->route('site.rota1');
+})->name('site.rota2');
+
+
+
+### ROTA DE CONTINGÊNCIA (FALLBACK)
+OBS: É a configuração das rotas que não existe, ou seja se o usuário digitar uma rota que não existe podemos colocar uma mensagem amigável para o usuário e colocar o link da nossa página principal
+
+< 404 | Not Found > //Página não encontrada
+
+//FUNÇÃO DE FALLBACK - APONTANDO PARA UMA FUNÇÃO CALLBACK, MAS A FUNÇÃO FALLBACK PODERIA APONTAR PARA UM CONTROLLER, UMA VIEW...
+Route::fallback(function(){
+	echo 'A rota acessada não existe. <a href="'.route('site.index').'">Clique aqui</a> para ir para a página inicial';
+});
+
+
+### ESSE COMANDO VERIFICA A ROTA EM USO E ATIVA O LINK
+{{(Route::current()->getName() === 'site.home' ? 'active' : '')}} 
