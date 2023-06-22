@@ -26,6 +26,14 @@ class CreateFornecedoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fornecedores');
+        //Schema::dropIfExists('fornecedores'); //FAZ UM TESTE SE JÁ EXISTE UMA TALEBA COM ESSE NOME ELA SERÁ EXCLUÍDA
+        Schema::drop('fornecedores'); //EXCLUI A TEBELA SEM REALIZAR TESTES
+
+        //Schema::table('fornecedores', function (Blueprint $table) {
+			//REMOVENDO COLUNAS
+            //$table->dropColumn('uf'); //COLUNA INDIVIDUAL
+			//$table->dropColumn('email'); //COLUNA INDIVIDUAL
+			//$table->dropColumn(['uf', 'email']); //ARRAY DE COLUNA
+        //});
     }
 }

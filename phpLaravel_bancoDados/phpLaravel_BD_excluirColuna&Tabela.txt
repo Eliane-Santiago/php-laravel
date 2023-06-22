@@ -1,0 +1,46 @@
+### BANCO DE DADOS - EXCLUINDO COLUNA E TABELA
+
+>>> EXCLUINDO COLUNA
+
+PASSO 01: Criar a migrate de excluir a coluna
+php artisan make:migration drop_column_nome_da_coluna --table=nome_da_tabela
+
+OBS: Substitua "nome_da_coluna" pelo nome da coluna que deseja excluir e "nome_da_tabela" pelo nome da tabela em que a coluna está localizada.
+
+PASSO 02: Foi criado um novo arquivo de migração na pasta "database/migrations" do seu projeto Laravel. Abra o arquivo recém-criado e, dentro do método up(), adicione o seguinte código:
+
+Schema::table('nome_da_tabela', function (Blueprint $table) {
+    $table->dropColumn('nome_da_coluna');
+});
+
+PASSO 03: Salve o arquivo e retorne ao terminal. Execute o seguinte comando para executar a migração
+
+php artisan migrate
+
+Isso aplicará a migração e excluirá a coluna especificada da tabela.
+
+Lembre-se de substituir "nome_da_coluna" pelo nome real da coluna e "nome_da_tabela" pelo nome real da tabela em seus comandos.
+
+
+>>> EXCLUINDO TABELA
+
+
+PASSO 01: Criar a migrate de excluir a tabela
+php artisan make:migration drop_table_nome_da_tabela
+
+OBS: Substitua "nome_da_tabela" pelo nome da tabela que deseja excluir.
+
+PASSO 02: Foi criado um novo arquivo de migração na pasta "database/migrations" do seu projeto Laravel. Abra o arquivo recém-criado e, dentro do método up(), adicione o seguinte código:
+
+Schema::dropIfExists('nome_da_tabela');
+
+PASSO 03: Salve o arquivo e retorne ao terminal. Execute o seguinte comando para executar a migração
+
+php artisan migrate
+
+Isso aplicará a migração e excluirá a coluna especificada da tabela.
+
+Lembre-se de substituir "nome_da_coluna" pelo nome real da coluna e "nome_da_tabela" pelo nome real da tabela em seus comandos.
+
+
+OBS: note que ao excluir uma tabela, todos os dados contidos nela serão permanentemente perdidos. Portanto, tenha certeza antes de executar essa ação.

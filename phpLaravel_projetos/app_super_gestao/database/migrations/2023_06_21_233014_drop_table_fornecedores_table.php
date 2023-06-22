@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterFornecedoresNovasColunas extends Migration
+class DropTableFornecedores extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,7 @@ class AlterFornecedoresNovasColunas extends Migration
      */
     public function up()
     {
-        //DIGITAR AQUI A COLUNA QUE DESEJA INCLUIR
-        Schema::table('fornecedores', function (Blueprint $table) {
-            $table->string('nome', 50);
-            $table->string('uf', 5);
-            $table->string('email', 150);
-        });
+        Schema::dropIfExists('fornecedores');
     }
 
     /**
@@ -28,6 +23,6 @@ class AlterFornecedoresNovasColunas extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fornecedores');
+        //
     }
 }

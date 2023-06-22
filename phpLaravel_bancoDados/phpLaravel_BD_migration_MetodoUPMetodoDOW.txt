@@ -1,0 +1,55 @@
+### BANCO DE DADOS - MIGRATION - METODOS UP E DOWN
+
+
+php artisan migrate //COMANDO PARA EXECUTAR AS MIGRATIONS
+php artisan migrate:rollback //COMANDO PARA DESFAZER AS EXECUÇÕES DAS MIGRATIONS
+php artisan migrate:rollback --step=2 //COMANDO PARA DESFAZER AS EXECUÇÕES DAS MIGRATIONS
+
+OBS: APÓS EXECUTAR ESSE COMANDO O QUE ESTIVER DENTRO DOS MÉTODOS UP/DOW SERÁ EXECUTADOS
+
+>>> MÉTODO UP
+- Executa os comandos das migrations ou seja insere/altera os dados no banco de dados
+- Para executar o método UP é só executar o comando "php artisan migrate"
+- Executa os comando do mais antigo para o mais atual (de frente para trás)
+
+	/**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('fornecedores', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
+    }
+
+php artisan migrate //COMANDO PARA EXECUTAR AS MIGRATIONS
+
+>>> MÉTODO DOWN (ROLLBACK)
+- Desfaz o que foi executado pelo Método UP
+- Para executar o método DOW é só executar o terminal "php artisan migrate:rollback"
+- Executa os comando do mais atual para o mais antigo (de trás para frente)
+
+	/**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('fornecedores', function (Blueprint $table) {
+			//REMOVENDO COLUNAS
+            //$table->dropColumn('uf'); //COLUNA INDIVIDUAL
+			//$table->dropColumn('email'); //COLUNA INDIVIDUAL
+			$table->dropColumn(['uf', 'email']); //ARRAY DE COLUNA
+        });
+    }
+	
+	php artisan migrate:rollback //COMANDO PARA DESFAZER AS EXECUÇÕES DAS MIGRATIONS
+	
+	OBS: Podemos determinar quantos passos de rollback podemos dar
+	php artisan migrate:rollback --step=2 //COMANDO PARA DESFAZER AS EXECUÇÕES DAS MIGRATIONS
+
+	

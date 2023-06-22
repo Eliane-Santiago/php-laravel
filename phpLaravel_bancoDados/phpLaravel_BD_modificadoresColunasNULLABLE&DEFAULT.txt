@@ -1,0 +1,8 @@
+### BANCO DE DADOS - MODIFICADORES DE COLUNAS NULLABLE E DEFULT]
+
+>>> MODIFICADORES DE COLUNAS NULLABLE
+- Permite que as colunas recebam valores vazios
+
+
+>>> MODIFICADORES DE COLUNAS DEFULT
+- Permite que as colunas recebam valores predefinidos caso não seja informados nenhum valor na coluna

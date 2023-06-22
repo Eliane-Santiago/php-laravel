@@ -1,12 +1,11 @@
 ### BANCO DE DADOS - COMANDOS MYSQL
 
->>> create database nomeBD;
+>>> create database nomeBD; //CRIAR TABELA
 
->>> use nomeBD;
+>>> use nomeBD;  //APONTA O BD QUE VAI RECEBER OS COMANDOS
 
->>> select * from fornecedores;
+>>> select * from fornecedores; //SELEECIONA A TABELA FORNECEDORES
 
->>> describe fornecedores;
+>>> describe fornecedores; //EXIBE AS DESCRIÇÕES DA TABELA FORNECEDORES
 
-
->>> alter table fornecedores add ...
+>>> alter table fornecedores add ... //ALTERAR OS INFORMAÇÕES DA TEBELA FORNECEDORES
