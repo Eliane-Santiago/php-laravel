@@ -1,8 +1,37 @@
 ### BANCO DE DADOS - MODIFICADORES DE COLUNAS NULLABLE E DEFULT]
 
+OBS(01): Para verificar as colunas NULL(NULLABLE) ou DEFAULT é digitar o comando <describe nomeTabela>
+EX.: describe fornecedores;
+
+OBS(02): Colunas que iram aparece é: 
+| Field | Type | Null | Key | Default | Extra | 
+
+
 >>> MODIFICADORES DE COLUNAS NULLABLE
 - Permite que as colunas recebam valores vazios
 
+ public function up()
+    {
+        Schema::create('produtos', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome', 100);
+            $table->text('descricao')->nullable();
+            $table->float('peso', 4, 2)->nullable();
+            $table->timestamps();
+        });
+    
 
 >>> MODIFICADORES DE COLUNAS DEFULT
 - Permite que as colunas recebam valores predefinidos caso não seja informados nenhum valor na coluna
+
+ public function up()
+    {
+        Schema::create('produtos', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome', 100);
+            $table->float('preco_venda', 8, 2)->default(0.01);
+            $table->string('estoque_minimo')->default(1);
+            $table->string('estoque_maxmo')->default(1);
+            $table->timestamps();
+        });
+    

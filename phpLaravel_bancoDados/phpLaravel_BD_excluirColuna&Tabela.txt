@@ -30,6 +30,9 @@ php artisan make:migration drop_table_nome_da_tabela
 
 OBS: Substitua "nome_da_tabela" pelo nome da tabela que deseja excluir.
 
+EX.: 
+php artisan make:migration drop_table_fornecedores
+
 PASSO 02: Foi criado um novo arquivo de migração na pasta "database/migrations" do seu projeto Laravel. Abra o arquivo recém-criado e, dentro do método up(), adicione o seguinte código:
 
 Schema::dropIfExists('nome_da_tabela');
